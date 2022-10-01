@@ -4,7 +4,7 @@
       <p>{{ task.description }}</p>
     </div>
     <div class="actions-container">
-      <input type="checkbox" />
+      <input type="checkbox" v-model="task.finished"/>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -12,6 +12,7 @@
         stroke-width="1.5"
         stroke="currentColor"
         class="w-6 h-6 delete-task"
+        @click="this.$emit('deleteTask')"
       >
         <path
           stroke-linecap="round"
@@ -38,12 +39,21 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 60%;
+  width: 75%;
+  margin-top: 10px;
 }
 
 .delete-task {
   height: 24px;
   width: 24px;
+  cursor: pointer;
+  color: rgb(82, 82, 82);
+  transition: 0.2s;
+}
+
+.delete-task:hover {
+
+  color: rgb(20, 20, 20);
 }
 
 .actions-container {

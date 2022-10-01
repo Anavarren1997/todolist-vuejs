@@ -1,7 +1,6 @@
 <template>
   <div class="view-container">
     <TaskContainer>
-      
     </TaskContainer>
   </div>
 </template>

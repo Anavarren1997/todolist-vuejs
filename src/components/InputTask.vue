@@ -2,12 +2,7 @@
   <div class="input-wrapper">
     <div class="input-container">
       <div class="text-container">
-        <input
-          class="input"
-          type="text"
-          placeholder="Add a Task..."
-          v-model="newTask"
-        />
+        <input class="input" type="text" placeholder="Add a Task..." v-model="newTask" />
       </div>
       <div class="button-container">
         <svg
@@ -17,14 +12,7 @@
           stroke-width="1.5"
           stroke="currentColor"
           class="w-6 h-6 button-add-task"
-          @click="
-            this.$emit('taskAdded', {
-              description: newTask,
-              priority: '',
-              finished: false,
-              subTasks: [],
-            })
-          "
+          @click="addTask()"
         >
           <path
             stroke-linecap="round"
@@ -43,6 +31,17 @@ export default {
     return {
       newTask: "",
     };
+  },
+  methods: {
+    addTask() {
+      this.$emit("taskAdded", {
+        description: this.newTask,
+        priority: "",
+        finished: false,
+        subTasks: [],
+      });
+      this.newTask = "";
+    },
   },
 };
 </script>
