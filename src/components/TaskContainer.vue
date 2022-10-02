@@ -2,7 +2,7 @@
   <div class="todo-container">
     <InputTask @taskAdded="tasks.push($event)"></InputTask>
     <TasksStatus :tasks="tasks"></TasksStatus>
-    <div class="task-wrapper">
+    <div class="tasks-wrapper">
       <Task
         v-for="task in tasks"
         :task="task"
@@ -50,7 +50,7 @@ export default {
   justify-content: start;
 }
 
-.task-wrapper{
+.tasks-wrapper{
   margin-top: 10px;
   width: 100%;
   display: flex;

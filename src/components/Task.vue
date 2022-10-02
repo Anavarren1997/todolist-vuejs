@@ -1,46 +1,54 @@
 <template>
-  <div class="task-container">
-    <div class="description-container">
-      <p>{{ task.description }}</p>
+  <div class="task-wrapper" :style="{ backgroundColor: taskBackgroundColor }">
+    <div class="task-container">
+      <div class="description-container">
+        <p>{{ task.description }}</p>
+      </div>
+      <div class="actions-container">
+        <input type="checkbox" v-model="task.finished" />
+        <IconDeleteTask class="delete-task"></IconDeleteTask>
+      </div>
     </div>
-    <div class="actions-container">
-      <input type="checkbox" v-model="task.finished"/>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6 delete-task"
-        @click="this.$emit('deleteTask')"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
+    <div class="display-subtasks-container">
+      <IconChevronRight class="display-subtasks"></IconChevronRight>
     </div>
   </div>
 </template>
 
 <script>
+import IconChevronRight from "./icons/IconChevronRight.vue";
+import IconDeleteTask from "./icons/IconDeleteTask.vue";
+
 export default {
   props: {
-    type: "", //could be either main task or subtask
     task: {},
+  },
+  components: { IconChevronRight, IconDeleteTask },
+  computed: {
+    taskBackgroundColor: function () {
+      return this.task.finished ? "#aeffb3" : "#f4ff91";
+    },
   },
 };
 </script>
 
 <style scooped>
+.task-wrapper {
+  width: 80%;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .task-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 75%;
-  margin-top: 10px;
+  width: 90%;
 }
 
 .delete-task {
@@ -51,8 +59,8 @@ export default {
   transition: 0.2s;
 }
 
-.delete-task:hover {
-
+.delete-task:hover,
+.display-subtasks:hover {
   color: rgb(20, 20, 20);
 }
 
@@ -66,5 +74,15 @@ export default {
   width: 16px;
   height: 16px;
   border-width: 3px;
+  cursor: pointer;
+}
+
+.display-subtasks {
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  color: rgb(82, 82, 82);
+  height: 16px;
+  width: 16px;
 }
 </style>
