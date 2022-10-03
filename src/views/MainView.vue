@@ -1,23 +1,20 @@
 <template>
   <div class="view-container">
-    <TaskContainer>
-    </TaskContainer>
+    <TodoContainer> </TodoContainer>
   </div>
 </template>
 
 <script>
-  import TaskContainer from '../components/TaskContainer.vue'
-  export default {
-    components: {TaskContainer}
-  }
+import TodoContainer from "../components/TodoContainer.vue";
+export default {
+  components: { TodoContainer },
+};
 </script>
 
 <style scooped>
-
-  .view-container{
-    display: grid;
-    place-items: center;
-    height: 95vh;
-  }
-
+.view-container {
+  display: grid;
+  place-items: center;
+  height: 95vh;
+}
 </style>

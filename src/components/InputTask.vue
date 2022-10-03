@@ -2,9 +2,14 @@
   <div class="input-wrapper">
     <div class="input-container">
       <div class="text-container">
-        <input class="input" type="text" placeholder="Add a Task..." v-model="newTask" />
+        <input
+          class="input"
+          type="text"
+          placeholder="Add a Task..."
+          v-model="newTask"
+        />
       </div>
-      <div class="button-container">
+      <div class="buttons-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -38,7 +43,6 @@ export default {
         description: this.newTask,
         priority: "",
         finished: false,
-        subTasks: [],
       });
       this.newTask = "";
     },
@@ -57,18 +61,18 @@ export default {
 .input-container {
   width: 45%;
   height: 45px;
-  margin: 15px 0;
+  margin: 15px 0px;
   border: 1px solid #ccc;
   border-radius: 25px;
   box-sizing: border-box;
   transition: width 0.4s ease-in-out;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .text-container {
-  width: 80%;
+  width: 70%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -85,11 +89,16 @@ export default {
   outline: none;
 }
 
-.button-container {
-  width: 10%;
+.buttons-container {
+  width: 23%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-around;
+}
+
+select {
+  border-radius: 15px;
+  padding: 1px;
 }
 
 .button-add-task {
